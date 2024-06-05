@@ -1,0 +1,74 @@
+<mvc:View controllerName="Emp_Table.controller.Table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<Table id="idEmpTable" sticky="ColumnHeaders" growing="true" fixedLayout="false" items="{path: '/EmployeeData'}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Employee Table" level="H2"/>
+				<ToolbarSpacer/>
+				<Button tooltip="Sort" icon="sap-icon://sort" press="handleSortButtonPressed"/>
+				<Button tooltip="Filter" icon="sap-icon://filter" press="handleFilterButtonPressed"/>
+				<Button tooltip="Group" icon="sap-icon://group-2" press="handleGroupButtonPressed"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar id="vsdFilterBar" visible="false">
+				<Text id="vsdFilterLabel" />
+			</OverflowToolbar>
+		</infoToolbar>
+
+		<columns>
+			<Column>
+            
+			</Column>
+			<Column>
+				<Text text="EmployeeID" />
+			</Column>
+			<Column >
+				<Text text="Name" />
+			</Column>
+			<Column width="10rem">
+				<Text text="Designation" />
+			</Column>
+			<Column >
+				<Text text="PhoneNumber" />
+			</Column>
+			<Column width="13rem">
+				<Text text="Email" />
+			</Column>
+			<Column >
+				<Text text="Salary" />
+			</Column>
+			<Column >
+				<Text text="Gender" />
+			</Column>
+			<Column >
+				<Text text="JoiningDate" />
+			</Column>
+			<Column >
+				<Text text="Address" />
+			</Column>
+			<Column hAlign="Center"/>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					
+					<VBox class="customHighlighter" visible="{visible}"><Text text=""/></VBox>
+					<Text text="{id}"/>
+					<Text text="{name}" />
+					<Text text="{designation}" />
+					<Text text="{phone}" />
+					<Text text="{email}" />
+					<Text text="{salary}" />
+					<Text text="{gender}" />
+					<Text text="{joiningDate}" />
+					<Text text="{address}" />
+					<Button icon="sap-icon://edit" press='onEditPress' />
+				</cells>
+
+			</ColumnListItem>
+		</items>
+	</Table>
+</mvc:View>

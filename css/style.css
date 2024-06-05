@@ -1,0 +1,16 @@
+/* style.css */
+
+body {
+    margin: 0;
+  }
+  
+  .customDialogPadding {
+    padding: 2px 20px; /* Adjust the padding as needed */
+  }
+  
+  .customHighlighter {
+    height: 100%;
+    width: 0.375rem;
+    border-right: 0.0625rem solid #fff;
+    background-color: #0070f2;
+  }

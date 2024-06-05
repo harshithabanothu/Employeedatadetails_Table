@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ViewSettingsDialog confirm=".handleGroupDialogConfirm" reset=".resetGroupDialog">
+        <groupItems>
+            <ViewSettingsItem text="Designation" key="designation" />
+        </groupItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

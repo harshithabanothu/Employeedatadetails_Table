@@ -1,0 +1,557 @@
+{
+    "Designations": [
+      { "value": "Developer" },
+      { "value": "Designer" },
+      { "value": "Manager" },
+      { "value": "Analyst" },
+      { "value": "Tester" },
+      { "value": "Administrator" }
+    ],
+    "EmployeeData": [
+      {
+        "id": "EMP0001",
+  
+        "name": "John Smith",
+  
+        "designation": "Developer",
+  
+        "phone": "1234567890",
+  
+        "email": "john.smith@company.com",
+  
+        "salary": 80000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2017-03-25",
+  
+        "address": "123 Main St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0002",
+  
+        "name": "Jane Johnson",
+  
+        "designation": "Designer",
+  
+        "phone": "0987654321",
+  
+        "email": "jane.johnson@company.com",
+  
+        "salary": 70000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2018-07-19",
+  
+        "address": "456 Elm St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0003",
+  
+        "name": "Alex Williams",
+  
+        "designation": "Manager",
+  
+        "phone": "2345678901",
+  
+        "email": "alex.williams@company.com",
+  
+        "salary": 90000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2016-05-30",
+  
+        "address": "789 Oak St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0004",
+  
+        "name": "Emily Jones",
+  
+        "designation": "Analyst",
+  
+        "phone": "3456789012",
+  
+        "email": "emily.jones@company.com",
+  
+        "salary": 75000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2019-11-20",
+  
+        "address": "101 Maple St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0005",
+  
+        "name": "Chris Brown",
+  
+        "designation": "Tester",
+  
+        "phone": "4567890123",
+  
+        "email": "chris.brown@company.com",
+  
+        "salary": 65000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2015-08-15",
+  
+        "address": "202 Pine St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0006",
+  
+        "name": "Katie Davis",
+  
+        "designation": "Administrator",
+  
+        "phone": "5678901234",
+  
+        "email": "katie.davis@company.com",
+  
+        "salary": 70000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2017-04-10",
+  
+        "address": "303 Cedar St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0007",
+  
+        "name": "Michael Miller",
+  
+        "designation": "Developer",
+  
+        "phone": "6789012345",
+  
+        "email": "michael.miller@company.com",
+  
+        "salary": 82000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2018-01-25",
+  
+        "address": "404 Birch St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0008",
+  
+        "name": "Sarah Wilson",
+  
+        "designation": "Designer",
+  
+        "phone": "7890123456",
+  
+        "email": "sarah.wilson@company.com",
+  
+        "salary": 73000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2016-06-14",
+  
+        "address": "505 Walnut St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0009",
+  
+        "name": "David Moore",
+  
+        "designation": "Manager",
+  
+        "phone": "8901234567",
+  
+        "email": "david.moore@company.com",
+  
+        "salary": 95000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2015-12-01",
+  
+        "address": "606 Cherry St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0010",
+  
+        "name": "Laura Taylor",
+  
+        "designation": "Analyst",
+  
+        "phone": "9012345678",
+  
+        "email": "laura.taylor@company.com",
+  
+        "salary": 78000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2019-03-19",
+  
+        "address": "707 Ash St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0011",
+  
+        "name": "John Smith",
+  
+        "designation": "Developer",
+  
+        "phone": "1234567890",
+  
+        "email": "john.smith@company.com",
+  
+        "salary": 80000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2017-03-25",
+  
+        "address": "123 Main St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0012",
+  
+        "name": "Jane Johnson",
+  
+        "designation": "Designer",
+  
+        "phone": "0987654321",
+  
+        "email": "jane.johnson@company.com",
+  
+        "salary": 70000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2018-07-19",
+  
+        "address": "456 Elm St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0013",
+  
+        "name": "Alex Williams",
+  
+        "designation": "Manager",
+  
+        "phone": "2345678901",
+  
+        "email": "alex.williams@company.com",
+  
+        "salary": 90000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2016-05-30",
+  
+        "address": "789 Oak St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0014",
+  
+        "name": "Emily Jones",
+  
+        "designation": "Analyst",
+  
+        "phone": "3456789012",
+  
+        "email": "emily.jones@company.com",
+  
+        "salary": 75000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2019-11-20",
+  
+        "address": "101 Maple St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0015",
+  
+        "name": "Chris Brown",
+  
+        "designation": "Tester",
+  
+        "phone": "4567890123",
+  
+        "email": "chris.brown@company.com",
+  
+        "salary": 65000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2015-08-15",
+  
+        "address": "202 Pine St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0016",
+  
+        "name": "Katie Davis",
+  
+        "designation": "Administrator",
+  
+        "phone": "5678901234",
+  
+        "email": "katie.davis@company.com",
+  
+        "salary": 70000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2017-04-10",
+  
+        "address": "303 Cedar St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0017",
+  
+        "name": "Michael Miller",
+  
+        "designation": "Developer",
+  
+        "phone": "6789012345",
+  
+        "email": "michael.miller@company.com",
+  
+        "salary": 82000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2018-01-25",
+  
+        "address": "404 Birch St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0018",
+  
+        "name": "Sarah Wilson",
+  
+        "designation": "Designer",
+  
+        "phone": "7890123456",
+  
+        "email": "sarah.wilson@company.com",
+  
+        "salary": 73000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2016-06-14",
+  
+        "address": "505 Walnut St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0019",
+  
+        "name": "David Moore",
+  
+        "designation": "Manager",
+  
+        "phone": "8901234567",
+  
+        "email": "david.moore@company.com",
+  
+        "salary": 95000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2015-12-01",
+  
+        "address": "606 Cherry St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0020",
+  
+        "name": "Laura Taylor",
+  
+        "designation": "Analyst",
+  
+        "phone": "9012345678",
+  
+        "email": "laura.taylor@company.com",
+  
+        "salary": 78000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2019-03-19",
+  
+        "address": "707 Ash St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0021",
+  
+        "name": "David Lee",
+  
+        "designation": "Tester",
+  
+        "phone": "7654321098",
+  
+        "email": "david.lee@company.com",
+  
+        "salary": 62000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2020-01-10",
+  
+        "address": "808 Willow St",
+  
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0022",
+  
+        "name": "Emma White",
+  
+        "designation": "Developer",
+  
+        "phone": "8765432109",
+  
+        "email": "emma.white@company.com",
+  
+        "salary": 83000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2017-06-15",
+  
+        "address": "909 Poplar St",
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0023",
+  
+        "name": "James Green",
+  
+        "designation": "Administrator",
+  
+        "phone": "9876543210",
+  
+        "email": "james.green@company.com",
+  
+        "salary": 71000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2016-10-05",
+  
+        "address": "1010 Spruce St",
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0024",
+  
+        "name": "Olivia Harris",
+  
+        "designation": "Designer",
+  
+        "phone": "8765432109",
+  
+        "email": "olivia.harris@company.com",
+  
+        "salary": 76000,
+  
+        "gender": "Female",
+  
+        "joiningDate": "2018-02-20",
+  
+        "address": "1111 Pine St",
+        "visible": false
+      },
+  
+      {
+        "id": "EMP0025",
+  
+        "name": "Noah Martin",
+  
+        "designation": "Manager",
+  
+        "phone": "7654321098",
+  
+        "email": "noah.martin@company.com",
+  
+        "salary": 94000,
+  
+        "gender": "Male",
+  
+        "joiningDate": "2019-09-15",
+  
+        "address": "1212 Cedar St",
+        "visible": false
+      }
+    ]
+  }

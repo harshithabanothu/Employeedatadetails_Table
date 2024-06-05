@@ -1,0 +1,26 @@
+<mvc:View controllerName="Emp_Table.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <App id="app">
+        <Page showHeader="false">
+            <IconTabBar id="idIconTabBar" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter text="Table" key="table">
+                        <mvc:XMLView viewName="Emp_Table.view.Table" />
+                    </IconTabFilter>
+                    <IconTabFilter text="Attachments" key="attachments">
+                        <Text text="Attachments go here ..." />
+                    </IconTabFilter>
+                    <IconTabFilter text="Notes" key="notes">
+                        <Text text="Notes go here ..." />
+                    </IconTabFilter>
+                    <IconTabFilter text="People" key="people">
+                        <Text text="People content goes here ..." />
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </Page>
+    </App>
+
+</mvc:View>
