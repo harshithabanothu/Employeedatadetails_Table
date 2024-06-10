@@ -2,7 +2,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
-	<Table id="idEmpTable" sticky="ColumnHeaders" growing="true" fixedLayout="false" items="{path: '/EmployeeData'}">
+	<Table id="idEmpTable" mode="SingleSelectLeft" growing="true" growingThreshold="10" fixedLayout="false" itemPress=".onItemPress" items="{path: '/EmployeeData'}">
 		<headerToolbar>
 			<OverflowToolbar>
 				<Title text="Employee Table" level="H2"/>
@@ -20,55 +20,56 @@
 
 		<columns>
 			<Column>
-            
 			</Column>
 			<Column>
-				<Text text="EmployeeID" />
+				<Text text="{i18n>id}" />
 			</Column>
 			<Column >
-				<Text text="Name" />
+				<Text text="{i18n>name}" />
 			</Column>
-			<Column width="10rem">
-				<Text text="Designation" />
-			</Column>
-			<Column >
-				<Text text="PhoneNumber" />
-			</Column>
-			<Column width="13rem">
-				<Text text="Email" />
+			<Column>
+				<Text text="{i18n>designation}" />
 			</Column>
 			<Column >
-				<Text text="Salary" />
+				<Text text="{i18n>number}" />
+			</Column>
+			<!-- <Column width="13rem">
+				<Text text="{i18n>email}" />
+			</Column> -->
+			<Column >
+				<Text text="{i18n>salary}" />
 			</Column>
 			<Column >
-				<Text text="Gender" />
+				<Text text="{i18n>gender}" />
 			</Column>
 			<Column >
-				<Text text="JoiningDate" />
+				<Text text="{i18n>joiningDate}" />
 			</Column>
 			<Column >
-				<Text text="Address" />
+				<Text text="{i18n>address}" />
 			</Column>
-			<Column hAlign="Center"/>
+			<!-- <Column hAlign="Center"/> -->
 		</columns>
 		<items>
-			<ColumnListItem vAlign="Middle">
+			<ColumnListItem vAlign="Middle" type="Active">
 				<cells>
-					
-					<VBox class="customHighlighter" visible="{visible}"><Text text=""/></VBox>
+					<VBox class="customHighlighter" visible="{visible}">
+						<Text text=""/>
+					</VBox>
 					<Text text="{id}"/>
 					<Text text="{name}" />
 					<Text text="{designation}" />
 					<Text text="{phone}" />
-					<Text text="{email}" />
+					<!-- <Text text="{email}" /> -->
 					<Text text="{salary}" />
 					<Text text="{gender}" />
 					<Text text="{joiningDate}" />
 					<Text text="{address}" />
-					<Button icon="sap-icon://edit" press='onEditPress' />
+					<!-- <Button icon="sap-icon://edit" press='onEditPress' /> -->
 				</cells>
 
 			</ColumnListItem>
 		</items>
+		
 	</Table>
 </mvc:View>

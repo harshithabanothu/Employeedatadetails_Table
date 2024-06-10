@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <!--<Button icon="sap-icon://save" tooltip="Update Details" type="Transparent" press="onUpdate"/>-->
+    <f:SimpleForm title="Edit Details" layout="ResponsiveGridLayout">
+        <f:toolbar>
+            <Toolbar >
+                <Title text="Edit Details"/>
+                <ToolbarSpacer />
+                <Button icon="sap-icon://decline" tooltip="Close" type="Transparent" press="onClose"/>
+            </Toolbar>
+        </f:toolbar>
+        <f:content>
+            <VBox>
+                <HBox alignItems="Center" width="100%" justifyContent="Start">
+                    <Label text="{i18n>name}: " width="120px"/>
+                    <Input value="{name}" liveChange=".onChange"/>
+                </HBox>
+            </VBox>
+            <VBox>
+                <HBox alignItems="Center" width="100%" justifyContent="Start">
+                    <Label text="{i18n>designation}: " width="120px"/>
+                    <Select selectedKey="{designation}" change=".onChange" items="{
+							path: '/Designations',
+                            sorter: {path:'value'} 
+						}">
+                        <core:Item key="{value}" text="{value}" />
+                    </Select>
+                </HBox>
+            </VBox>
+            <VBox>
+                <HBox alignItems="Center" width="100%" justifyContent="Start">
+                    <Label text="{i18n>number}: " width="120px"/>
+                    <Input value="{phone}" liveChange=".onChange"/>
+                </HBox>
+            </VBox>
+            <!-- <VBox>
+                <HBox alignItems="Center" width="100%" justifyContent="Start">
+                    <Label text="{i18n>email}: " width="120px"/>
+                    <Input value="{email}" />
+                </HBox>
+            </VBox> -->
+            <VBox>
+                <HBox alignItems="Center" width="100%" justifyContent="Start">
+                    <Label text="{i18n>salary}: " width="120px"/>
+                    <Input value="{salary}" liveChange=".onChange"/>
+                </HBox>
+            </VBox>
+            <VBox>
+                <HBox alignItems="Center" width="100%" justifyContent="Start">
+                    <Label text="{i18n>gender}: " width="120px"/>
+                    <RadioButtonGroup columns="2" select=".onGenderChange">
+                        <RadioButton text="Male" selected="{=${gender} === 'Male'}" />
+                        <RadioButton text="Female" selected="{=${gender} === 'Female'}" />
+                    </RadioButtonGroup>
+                </HBox>
+            </VBox>
+            <VBox>
+                <HBox alignItems="Center" width="100%" justifyContent="Start">
+                    <Label text="{i18n>joiningDate}: " width="120px"/>
+                    <DatePicker placeholder="Enter Date" value="{joiningDate}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" change=".onChange" />
+                </HBox>
+            </VBox>
+            <VBox>
+                <HBox alignItems="Center" width="100%" justifyContent="Start">
+                    <Label text="{i18n>address}: " width="120px"/>
+                    <Input value="{address}" liveChange=".onChange"/>
+                </HBox>
+            </VBox>
+        </f:content>
+    </f:SimpleForm >
+</core:FragmentDefinition>

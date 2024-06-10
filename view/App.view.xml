@@ -1,13 +1,24 @@
 <mvc:View controllerName="Emp_Table.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
     xmlns="sap.m">
     <App id="app">
-        <Page showHeader="false">
+        <Page showHeader="false" showFooter="{viewModel>/footerVisible}">
             <IconTabBar id="idIconTabBar" class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter text="Table" key="table">
-                        <mvc:XMLView viewName="Emp_Table.view.Table" />
+                        <l:ResponsiveSplitter id="rSpiliter" defaultPane="default">
+                            <l:PaneContainer resize=".onRootContainerResize">
+                                <l:SplitPane>
+                                    <l:layoutData>
+                                        <l:SplitterLayoutData size="100%" />
+                                    </l:layoutData>
+                                    <mvc:XMLView viewName="Emp_Table.view.Table" />
+                                </l:SplitPane>
+
+                            </l:PaneContainer>
+                        </l:ResponsiveSplitter>
                     </IconTabFilter>
                     <IconTabFilter text="Attachments" key="attachments">
                         <Text text="Attachments go here ..." />
@@ -20,6 +31,13 @@
                     </IconTabFilter>
                 </items>
             </IconTabBar>
+            <footer>
+                <Toolbar>
+                    <ToolbarSpacer />
+                    <Button text="Save" type="Emphasized" press="onSave" />
+                    <Button text="Cancel" press="onCancel" />
+                </Toolbar>
+            </footer>
         </Page>
     </App>
 

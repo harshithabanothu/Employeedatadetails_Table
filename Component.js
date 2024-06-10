@@ -17,10 +17,6 @@ sap.ui.define([
             const oModel = new JSONModel();
             oModel.loadData('./model/Empdata.json')
             oComponent.setModel(oModel);
-            var i18nModel = new ResourceModel({
-                bundleName: "Emp_Table.i18n.i18n"
-            });
-            oComponent.setModel(i18nModel, "i18n");
 
             var oViewModel = new JSONModel({
                 busy: true,

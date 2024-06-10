@@ -5,54 +5,11 @@ sap.ui.define([
     'sap/ui/model/Filter',
     'sap/ui/model/Sorter',
     "sap/m/library",
-    "sap/m/Dialog",
-    "sap/m/Button",
-    "sap/m/VBox",
-    "sap/m/Label",
-    "sap/m/Input",
-    "sap/m/Select",
     'sap/ui/core/Fragment',
-], function (Controller, JSONModel, Device, Filter, Sorter, Library, Dialog, Button, VBox, Label, Input, Select, Fragment) {
+    "sap/ui/layout/SplitPane",
+    "sap/ui/layout/SplitterLayoutData"
+], function (Controller, JSONModel, Device, Filter, Sorter, Library, Fragment, SplitPane, SplitterLayoutData) {
     "use strict";
-    var ButtonType = Library.ButtonType;
-    var fields = [
-        {
-            key: "id",
-            value: "Employee ID"
-        },
-        {
-            key: "name",
-            value: "Name"
-        },
-        {
-            key: "designation",
-            value: "Designation"
-        },
-        {
-            key: "phone",
-            value: "PhoneNumber"
-        },
-        {
-            key: "email",
-            value: "Email"
-        },
-        {
-            key: "salary",
-            value: "Salary"
-        },
-        {
-            key: "gender",
-            value: "Gender"
-        },
-        {
-            key: "joiningDate",
-            value: "JoiningDate"
-        },
-        {
-            key: "address",
-            value: "Address"
-        },
-    ];
     var TableController = Controller.extend("Emp_Table.controller.Table", {
         onInit: function () {
             var oController = this;
@@ -94,21 +51,19 @@ sap.ui.define([
 
         handleSortButtonPressed: function () {
             var oController = this;
-            oController.getViewSettingsDialog("Emp_Table.fragment.SortDialog")
+            oController.getViewSettingsDialog("Emp_Table.fragments.SortDialog")
                 .then(function (oViewSettingsDialog) {
                     oViewSettingsDialog.open();
                 });
         },
-
         handleFilterButtonPressed: function () {
-            this.getViewSettingsDialog("Emp_Table.fragment.FilterDialog")
+            this.getViewSettingsDialog("Emp_Table.fragments.FilterDialog")
                 .then(function (oViewSettingsDialog) {
                     oViewSettingsDialog.open();
                 });
         },
-
         handleGroupButtonPressed: function () {
-            this.getViewSettingsDialog("Emp_Table.fragment.GroupDialog")
+            this.getViewSettingsDialog("Emp_Table.fragments.GroupDialog")
                 .then(function (oViewSettingsDialog) {
                     oViewSettingsDialog.open();
                 });
@@ -152,7 +107,6 @@ sap.ui.define([
             this.byId("vsdFilterBar").setVisible(aFilters.length > 0);
             this.byId("vsdFilterLabel").setText(mParams.filterString);
         },
-
         handleGroupDialogConfirm: function (oEvent) {
             var oTable = this.byId("idEmpTable"),
                 mParams = oEvent.getParameters(),
@@ -175,151 +129,90 @@ sap.ui.define([
             }
         },
 
-
-
-        onEditPress: function (oEvent) {
+        onItemPress: function (oEvent) {
             var oController = this;
             var oModel = oController.getView().getModel();
-            var viewModel = oController.getView().getModel("viewModel")
-            // to get the row Data starts
-            var oSelectedItem = oEvent.getSource().getParent();
+            var viewModel = oController.getView().getModel("viewModel");
+
+            var oSelectedItem = oEvent.getParameter('listItem')
+            oSelectedItem.setSelected(true)
             var oContext = oSelectedItem.getBindingContext();
-            var oEmployeeData = oContext.getObject();
-            // to get the row Data ends
-            oController.oDialog = new Dialog({
-                title: "Edit Employee Details",
-                contentWidth: "500px",
-                content: oController.generateFields(oEmployeeData),
-                beginButton: new Button({
-                    type: ButtonType.Emphasized,
-                    text: "Save",
-                    press: function () {
-                        var aInputs = oController.oDialog.getContent();
-                        fields.forEach((field, i) => {
-                            let value;
-                            if (field.key === "gender") {
-                                aInputs[i].getItems()[1].getButtons().forEach(btn => {
-                                    if (btn.getSelected()) {
-                                        value = btn.getText()
-                                    }
-                                })
-                                // value = aInputs[i].getItems()[1].getSelectedButton().getText()
-                            }
-                            else if (field.key === "designation") value = aInputs[i].getItems()[1].getSelectedKey()
-                            else if (field.key === "joiningDate") value = aInputs[i].getItems()[1].getValue()
-                            else value = aInputs[i].getItems()[1].getValue();
+            var data = oModel.getProperty(oContext.getPath());
+            var oContext1 = $.extend(true, {}, data);
 
-                            if (value != oEmployeeData[field.key]) {
-                                oEmployeeData[field.key] = value
-                                oEmployeeData.visible = true
-                            }
+            viewModel.setProperty("/previousRowData", oContext1)
+            viewModel.setProperty("/sPath", oContext.getPath())
 
-                        });
-                        viewModel.setProperty('/modelChanged_' + oEmployeeData.id, true);
-                        oModel.refresh();
-                        oController.oDialog.close();
-                    }.bind(oController)
-                }),
-                endButton: new Button({
-                    text: "Cancel",
-                    press: function () {
-                        oController.oDialog.close();
-                    }.bind(oController)
-                }),
-                afterClose: function () {
-                    oController.oDialog.destroy(); // Destroy the dialog
-                }
+            var oSplitter = oController.getView().getParent().getParent()
+            if (oSplitter.getPanes() && oSplitter.getPanes()[1]) {
+                oSplitter.removePane(1);
+            }
+            oSplitter.getPanes()[0].getLayoutData().setSize("75%");
+            var oSplitterLayoutData = new SplitterLayoutData({
+                size: "25%"
             });
+            var oSplitPane = new SplitPane({
+                layoutData: oSplitterLayoutData
+            });
+            var sFragmentId = this.createId("fragment_" + new Date().getTime());
 
-            // to get access to the controller's model
-            // oController.getView().addDependent(oController.oDialog);
-            // }
+            Fragment.load({
+                id: sFragmentId,
+                name: "Emp_Table.fragments.EditDetailsDialog",
+                type: "XML",
+                controller: this
+            }).then(function (oFragment) {
+                oSplitPane.setContent(oFragment);
+                oSplitter.addPane(oSplitPane);
+            }.bind(this));
+            oSplitter.setModel(oModel);
+            oSplitter.setBindingContext(oContext);
+        },
+        onGenderChange: function (oEvent) {
+            var oController = this
+            var oModel = oEvent.getSource().getModel();
+            var viewModel = oController.getView().getModel("viewModel");
 
-            oController.oDialog.open();
+
+
+
+            var oSelectedItemIndex = oEvent.getParameter("selectedIndex")
+            var oRadioButtons = oEvent.getSource().getButtons();
+            var selectedRadioButton = oRadioButtons[oSelectedItemIndex].getText()
+
+            var oSelectedItem = oEvent.getSource()
+            var oBindingContext = oSelectedItem.getBindingContext()
+            var sPath = oBindingContext.getPath()
+
+            oModel.setProperty(sPath + '/gender', selectedRadioButton)
+            oModel.setProperty(sPath + '/visible', true)
+            viewModel.setProperty("/footerVisible", true)
         },
 
-        generateSelectItems: (data) => {
-            let items = [];
-
-            data.forEach(d => {
-                var oItem = new sap.ui.core.Item({
-                    key: d.value,
-                    text: d.value,
-                });
-                items.push(oItem)
-            })
-            return items
-        },
-
-        generateFields: function (oEmployeeData) {
+        onChange: function (oEvent) {
             var oController = this;
-            var modelData = oController.getView().getModel()
-            var items = [];
-            fields.forEach((field, i) => {
-                var id = "field" + i
-                var oLabel = new Label({
-                    text: field.value,
-                    labelFor: id,
-                    design: "Bold"
-                });
+            var oModel = oEvent.getSource().getModel();
+            var viewModel = oController.getView().getModel("viewModel");
 
-                // Create the Input control
-                var oInput;
-
-                switch (field.key) {
-                    case "designation":
-                        oInput = new Select({
-                            selectedKey: oEmployeeData[field.key],
-                            items: oController.generateSelectItems(modelData.getData()['Designations'])
-                            // items: {
-                            //     path: "/Designations",
-                            //     template: new sap.ui.core.Item({
-                            //         key: "{value}",
-                            //         text: "{value}"
-                            //     })
-                            // }
-                        });
-                        break
-
-                    case "joiningDate":
-                        oInput = new sap.m.DatePicker(id, {
-                            placeholder: "Enter Date",
-                            valueFormat: "yyyy-MM-dd",
-                            displayFormat: "yyyy-MM-dd",
-
-                            value: oEmployeeData[field.key],
-                        });
-                        break
-                    case "gender":
-                        oInput = new sap.m.RadioButtonGroup(id, {
-                            columns: 2,
-                            buttons: [
-                                new sap.m.RadioButton({ text: "Male", selected: oEmployeeData[field.key] == "Male" }),
-                                new sap.m.RadioButton({ text: "Female", selected: oEmployeeData[field.key] == "Female" }),
-                            ]
-                        });
-                        break;
-
-                    default:
-                        oInput = new Input({
-                            id: id,
-                            value: oEmployeeData[field.key],
-                            editable: field.key === "id" ? false : true,
-                            placeholder: field.value
-                        });
-                        break;
+            var sPath = viewModel.getProperty("/sPath");
+            var updatedData = oModel.getProperty(sPath);
+            var previousRowData = viewModel.getProperty("/previousRowData")
+            for (const key in previousRowData) {
+                const element = previousRowData[key];
+                if (element != updatedData[key]) {
+                    updatedData.visible = true;
                 }
-
-                // Place the controls in a container (e.g., a VBox)
-                var oVBox = new VBox({
-                    items: [oLabel, oInput]
-                });
-                oVBox.addStyleClass("customDialogPadding")
-                items.push(oVBox)
-            })
-
-            return items
+            }
+            oModel.setProperty(sPath, updatedData);
+            viewModel.setProperty("/footerVisible", true)
         },
+
+        onClose: function (oEvent) {
+            var oController = this;
+            var oSplitter = oController.getView().getParent().getParent();
+            oSplitter.getPanes()[0].getLayoutData().setSize("100%");
+            oSplitter.removePane(1);
+        }
     });
     return TableController;
 });
