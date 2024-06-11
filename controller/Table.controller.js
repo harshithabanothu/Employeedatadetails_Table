@@ -13,6 +13,9 @@ sap.ui.define([
     var TableController = Controller.extend("Emp_Table.controller.Table", {
         onInit: function () {
             var oController = this;
+            var oModel = oController.getOwnerComponent().getModel();
+            var viewModel = oController.getOwnerComponent().getModel("viewModel");
+
             oController._mViewSettingsDialogs = {}
 
             this.mGroupFunctions = {
@@ -24,6 +27,7 @@ sap.ui.define([
                     };
                 },
             };
+
 
         },
         resetGroupDialog: function (oEvent) {
@@ -136,11 +140,9 @@ sap.ui.define([
 
             var oSelectedItem = oEvent.getParameter('listItem')
             oSelectedItem.setSelected(true)
+            
             var oContext = oSelectedItem.getBindingContext();
-            var data = oModel.getProperty(oContext.getPath());
-            var oContext1 = $.extend(true, {}, data);
 
-            viewModel.setProperty("/previousRowData", oContext1)
             viewModel.setProperty("/sPath", oContext.getPath())
 
             var oSplitter = oController.getView().getParent().getParent()
@@ -173,9 +175,6 @@ sap.ui.define([
             var oModel = oEvent.getSource().getModel();
             var viewModel = oController.getView().getModel("viewModel");
 
-
-
-
             var oSelectedItemIndex = oEvent.getParameter("selectedIndex")
             var oRadioButtons = oEvent.getSource().getButtons();
             var selectedRadioButton = oRadioButtons[oSelectedItemIndex].getText()
@@ -193,22 +192,16 @@ sap.ui.define([
             var oController = this;
             var oModel = oEvent.getSource().getModel();
             var viewModel = oController.getView().getModel("viewModel");
-
             var sPath = viewModel.getProperty("/sPath");
-            var updatedData = oModel.getProperty(sPath);
-            var previousRowData = viewModel.getProperty("/previousRowData")
-            for (const key in previousRowData) {
-                const element = previousRowData[key];
-                if (element != updatedData[key]) {
-                    updatedData.visible = true;
-                }
-            }
-            oModel.setProperty(sPath, updatedData);
+            oModel.setProperty(sPath + '/visible', true)
             viewModel.setProperty("/footerVisible", true)
         },
 
         onClose: function (oEvent) {
             var oController = this;
+
+            var oTable = oController.getView().byId("idEmpTable");
+            oTable.getSelectedItem().setSelected(false)
             var oSplitter = oController.getView().getParent().getParent();
             oSplitter.getPanes()[0].getLayoutData().setSize("100%");
             oSplitter.removePane(1);

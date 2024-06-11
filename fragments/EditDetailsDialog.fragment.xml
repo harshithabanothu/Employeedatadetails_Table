@@ -31,7 +31,7 @@
             <VBox>
                 <HBox alignItems="Center" width="100%" justifyContent="Start">
                     <Label text="{i18n>number}: " width="120px"/>
-                    <Input value="{phone}" liveChange=".onChange"/>
+                    <Input value="{phone}" type="Tel" liveChange=".onChange" maxLength="10"/>
                 </HBox>
             </VBox>
             <!-- <VBox>
@@ -43,7 +43,7 @@
             <VBox>
                 <HBox alignItems="Center" width="100%" justifyContent="Start">
                     <Label text="{i18n>salary}: " width="120px"/>
-                    <Input value="{salary}" liveChange=".onChange"/>
+                    <Input value="{salary}" liveChange=".onChange" type="Number"/>
                 </HBox>
             </VBox>
             <VBox>
